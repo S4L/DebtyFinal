@@ -7,7 +7,9 @@ namespace DebtyFinal.Models
     {
         [Key]
         public Guid PaymentID { get; set; }
+        [Required]
         public double PayAmount { get; set; }
+        [Required]
         public DateTime PayDate { get; set; }
         
     }
