@@ -9,7 +9,6 @@ namespace DebtyFinal.Models
     public class Person
     {
         [Key]
-        [Required]
         public Guid PersonID { get; set; }
         [Required]
         public string FirstName { get; set; }

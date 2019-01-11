@@ -9,7 +9,6 @@ namespace DebtyFinal.Models
     public class Loan
     {
         [Key]
-        [Required]
         public Guid LoanID { get; set; }
 
         [Required]
@@ -26,13 +25,13 @@ namespace DebtyFinal.Models
         [Required]
         public string LoanAmount { get; set; }
 
-        [Required]
+        
         public Payment Payment { get; set; }
 
-        [Required]
+        
         public Person Creditor { get; set; }
 
-        [Required]
+        
         public Person Debtor { get; set; }
     }
 }

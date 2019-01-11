@@ -5,7 +5,7 @@ namespace DebtyFinal.Models
 {
     public class Credential
     {
-        [Required]
+        [Key]
         public Guid CredentialID { get; set; }
         [Required]
         public string Password { get; set; }
