@@ -8,7 +8,7 @@ namespace DebtyFinal.DataAccess.DataModels
     public class DebtorLoan
     {
         [Required]
-        public Guid DebtorID { get; set; }
+        public string DebtorID { get; set; }
         public Debtor Debtor { get; set; }
 
         

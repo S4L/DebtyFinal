@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using DebtyFinal.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using DebtyFinal.Models;
 
 namespace DebtyFinal.Controllers
 {

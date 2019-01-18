@@ -1,25 +1,45 @@
 ﻿using DebtyFinal.DataAccess.DataModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace DebtyFinal.DataAccess
 {
-    public class DebtyDBContext : DbContext
+    public class DebtyDBContext : IdentityDbContext<Person>
     {
-        const string connectionString = "Server=.;Database=DebtyDB;Trusted_Connection=True;MultipleActiveResultSets=True";
+        public DebtyDBContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        protected DebtyDBContext() : base()
+        {
+        }
+
         public DbSet<Person> Persons { get; set; }
         public DbSet<Loan> Loans { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<DebtorLoan> DebtorLoans { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            optionsBuilder.UseSqlServer(connectionString);
+            base.OnModelCreating(builder);
+            builder.Entity<DebtorLoan>().HasKey(dl => new { dl.DebtorID, dl.LoanID });
+            builder.Entity<DebtorLoan>()
+                .HasOne(dl => dl.Debtor)
+                .WithMany(dl => dl.DebtorLoans)
+                .HasForeignKey(dl => dl.DebtorID);
+            builder.Entity<DebtorLoan>()
+               .HasOne(dl => dl.Loan)
+               .WithMany(dl => dl.DebtorLoans)
+               .HasForeignKey(dl => dl.LoanID);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            modelBuilder.Entity<DebtorLoan>().HasKey(dl => new { dl.DebtorID, dl.LoanID });
+            if (!optionsBuilder.IsConfigured)
+            {
+                base.OnConfiguring(optionsBuilder);
+            }
         }
     }
 }
