@@ -39,11 +39,9 @@ namespace DebtyFinal
             services.AddDbContext<DebtyDBContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection"), sql => sql.MigrationsAssembly("DebtyFinal.DataAccess")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<Person>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<DebtyDBContext>();
-            
-
            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
