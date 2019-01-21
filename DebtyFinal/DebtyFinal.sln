@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebtyFinal.Logics", "DebtyF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebtyFinal.DataAccess", "DebtyFinal.DataAccess\DebtyFinal.DataAccess.csproj", "{094FEB31-E1CA-46B4-ADC9-11019902DA6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtyFinal", "DebtyFinal\DebtyFinal.csproj", "{1EC7C958-32B6-43F8-91CA-A026A8B06F81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebtyFinal", "DebtyFinal\DebtyFinal.csproj", "{1EC7C958-32B6-43F8-91CA-A026A8B06F81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtyFinal.Interfaces", "DebtyFinal.Interfaces\DebtyFinal.Interfaces.csproj", "{3A595EA7-67D7-4A2C-A6D8-F93A40730F7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1EC7C958-32B6-43F8-91CA-A026A8B06F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC7C958-32B6-43F8-91CA-A026A8B06F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC7C958-32B6-43F8-91CA-A026A8B06F81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A595EA7-67D7-4A2C-A6D8-F93A40730F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A595EA7-67D7-4A2C-A6D8-F93A40730F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A595EA7-67D7-4A2C-A6D8-F93A40730F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A595EA7-67D7-4A2C-A6D8-F93A40730F7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

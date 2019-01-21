@@ -4,8 +4,8 @@ using System.Text;
 
 namespace DebtyFinal.Models
 {
-    public class Creditor
+    public class Creditor : Person
     {
-        public Guid CreditorID { get; set; }
+        public List<Loan> Loans { get; set; }
     }
 }
