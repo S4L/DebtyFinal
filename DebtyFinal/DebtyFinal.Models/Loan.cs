@@ -11,8 +11,8 @@ namespace DebtyFinal.Models
         public string LoanDesc { get; set; }
         public DateTime LoanDate { get; set; }
         public DateTime Deadline { get; set; }
-        public Person Creditor { get; set; }
-        public List<Person> Debtors { get; set; }
+        public Creditor Creditor { get; set; }
+        public List<Debtor> Debtors { get; set; }
         public List<Payment> Payments { get; set; }
     }
 }

@@ -1,7 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DebtyFinal.DataAccess\DebtyFinal.DataAccess.csproj" />
+    <ProjectReference Include="..\DebtyFinal.Interfaces\DebtyFinal.Interfaces.csproj" />
+  </ItemGroup>
 
 </Project>

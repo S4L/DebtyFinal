@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DebtyFinal.Interfaces\DebtyFinal.Interfaces.csproj" />
     <ProjectReference Include="..\DebtyFinal.Models\DebtyFinal.Models.csproj" />
   </ItemGroup>
 

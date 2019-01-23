@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="LogicInterface\" />
+    <ProjectReference Include="..\DebtyFinal.Models\DebtyFinal.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

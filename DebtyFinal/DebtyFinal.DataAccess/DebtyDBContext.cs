@@ -11,7 +11,7 @@ namespace DebtyFinal.DataAccess
         {
         }
 
-        protected DebtyDBContext() : base()
+        public DebtyDBContext() : base()
         {
         }
 
