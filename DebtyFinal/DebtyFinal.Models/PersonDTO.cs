@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DebtyFinal.Models
 {
-    public class Person
+    public class PersonDTO
     {
         public Guid PersonID { get; set; }
         public string FirstName { get; set; }

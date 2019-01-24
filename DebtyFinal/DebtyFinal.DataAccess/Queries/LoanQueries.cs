@@ -19,23 +19,24 @@ namespace DebtyFinal.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Loan> GetLoansByUserID(string userID)
+        public List<LoanDTO> GetLoansByUserID(string userID)
         {
-            List<Loan> Loans = new List<Loan>();
-            //using (var context = new DebtyDBContext())
-            //{
-            //    var loans = from loan in context.Loans
-            //                join person in context.Persons
-            //                on new { loan.Creditor.Id } equals new { person.Id }
-            //                select new { loan.LoanID, loan.LoanName, loan.LoanDesc, loan.LoanDate, loan.Deadline, loan.LoanAmount,loan.Creditor };
-
-            //    var debtorloans = from debtorloan in context.DebtorLoans
-            //                      join l in loans
-            //                      on new {debtorloan.LoanID} equals new { l.LoanID }
-            //                      select new { }
-            //}
-
-            return Loans;
+            IQueryable<LoanDTO> loans = null;
+            using (var context = new DebtyDBContext())
+            {
+                 loans = from loan in context.Loans
+                            where loan.Creditor.Id == userID
+                            select new LoanDTO()
+                            {
+                                LoanID = loan.LoanID,
+                                LoanName = loan.LoanName,
+                                LoanDate = loan.LoanDate,
+                                LoanDesc = loan.LoanDesc,
+                                Creditor = new CreditorDTO { FirstName = loan.Creditor.FirstName, LastName = loan.Creditor.LastName},
+                                Deadline = loan.Deadline
+                            };
+                return loans.ToList();
+            }
         }
 
         public void UpdateLoan()

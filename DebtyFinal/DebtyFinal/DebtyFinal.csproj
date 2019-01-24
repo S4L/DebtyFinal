@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DebtyFinal.DataAccess\DebtyFinal.DataAccess.csproj" />
+    <ProjectReference Include="..\DebtyFinal.Logics\DebtyFinal.Logics.csproj" />
+    <ProjectReference Include="..\DebtyFinal.Models\DebtyFinal.Models.csproj" />
   </ItemGroup>
 
 </Project>
