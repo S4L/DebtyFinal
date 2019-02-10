@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DebtyFinal.Interfaces;
 using DebtyFinal.Logics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -19,10 +20,19 @@ namespace DebtyFinal.Controllers
             loanLogic = new LoanLogic();
         }
 
+        public LoanController(ILoan loanLogic)
+        {
+            loanLogic = loanLogic;
+
+            logger.asda();
+
+            loanLogic.AddLoan();
+        }
+
         public IActionResult Index()
         {
-            var userID = User.Identity.Name;
-            //var loans = loanLogic.GetLoansByUserID();
+            var userID = Http
+            var loans = loanLogic.GetLoansByUserID();
             return View();
         }
     }
