@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace DebtyFinal.DataAccess
 {
@@ -38,6 +39,7 @@ namespace DebtyFinal.DataAccess
         {
             if (!optionsBuilder.IsConfigured)
             {
+                optionsBuilder.UseSqlServer("Server =.; Database = DebtyDB; Trusted_Connection = True; MultipleActiveResultSets = true");
                 base.OnConfiguring(optionsBuilder);
             }
         }
