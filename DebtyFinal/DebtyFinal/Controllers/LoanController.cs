@@ -13,16 +13,19 @@ namespace DebtyFinal.Controllers
     public class LoanController : Controller
     {
         private LoanLogic loanLogic;
+        private PersonLogic personLogic;
 
         public LoanController()
         {
             loanLogic = new LoanLogic();
+            personLogic = new PersonLogic();
         }
 
         public IActionResult Index()
         {
-            var userID = User.Identity.Name;
-            //var loans = loanLogic.GetLoansByUserID();
+            var userName = HttpContext.User.Identity.Name;
+            var id = personLogic.GetPersonIDByUserName(userName);
+            var loans = loanLogic.GetLoans(id);
             return View();
         }
     }

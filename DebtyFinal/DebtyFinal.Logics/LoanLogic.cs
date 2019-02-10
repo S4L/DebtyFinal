@@ -25,9 +25,14 @@ namespace DebtyFinal.Logics
             throw new NotImplementedException();
         }
 
-        public List<LoanDTO> GetLoansByUserID(string userID)
+        public List<Loan> GetLoans(Guid userID)
         {
-            return loanQueries.GetLoansByUserID(userID);
+            return loanQueries.GetLoans(userID);
+        }
+
+        public List<Loan> GetLoans(string userID)
+        {
+            return loanQueries.GetLoans(userID);
         }
 
         public void UpdateLoan()

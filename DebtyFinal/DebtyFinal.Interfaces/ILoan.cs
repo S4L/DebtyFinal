@@ -7,7 +7,8 @@ namespace DebtyFinal.Interfaces
 {
     public interface ILoan
     {
-        List<LoanDTO> GetLoansByUserID(string userID);
+        List<Loan> GetLoans(string userID);
+        List<Loan> GetLoans(Guid userID);
         void AddLoan();
         void UpdateLoan();
         void DeleteLoan();

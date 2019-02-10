@@ -36,9 +36,7 @@ namespace DebtyFinal
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<DebtyDBContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection"), sql => sql.MigrationsAssembly("DebtyFinal.DataAccess")));
+            services.AddDbContext<DebtyDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), sql => sql.MigrationsAssembly("DebtyFinal.DataAccess")));
             services.AddDefaultIdentity<Person>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<DebtyDBContext>();
