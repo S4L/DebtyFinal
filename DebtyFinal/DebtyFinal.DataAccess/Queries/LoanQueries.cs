@@ -55,35 +55,47 @@ namespace DebtyFinal.DataAccess.Repositories
             {
                 using (var context = new DebtyDBContext())
                 {
-                    var debtors = (from debtorloan in context.DebtorLoans
-                                   join debtor in context.Persons on debtorloan.DebtorID equals debtor.Id
+                    var loanss = (from loan in context.Loans
+                                  join creditor in context.Persons on loan.Creditor.Id equals creditor.Id
+                                  where loan.Creditor.Id == userID
+                                  select new
+                                  {
+                                      loanID = loan.LoanID,
+                                      loanName = loan.LoanName,
+                                      loanDesc = loan.LoanDesc,
+                                      loanDate = loan.LoanDate,
+                                      deadline = loan.Deadline,
+                                      loanAmount = loan.LoanAmount,
+                                      Creditor = new Creditor { PersonID = loan.Creditor.Id, FirstName = creditor.FirstName, LastName = creditor.LastName },
+                                  }).ToList();
+
+                    var debtors = (from dl in context.DebtorLoans
+                                   join debtor in context.Persons on dl.DebtorID equals debtor.Id
                                    select new
                                    {
-                                       loanID = debtorloan.LoanID,
+                                       loanID = dl.LoanID,
                                        debtor = new Debtor { FirstName = debtor.FirstName, LastName = debtor.LastName }
-                                   }).ToList();
-
-                    loans = (from loan in context.Loans
-                                   join creditor in context.Persons on loan.Creditor.Id equals creditor.Id
-                                   where loan.Creditor.Id == userID
-                                   select new Loan()
+                                   } into D
+                                   group D by D.loanID into Debtors
+                                   select new
                                    {
-                                       LoanID = loan.LoanID,
-                                       LoanName = loan.LoanName,
-                                       LoanDesc = loan.LoanDesc,
-                                       LoanDate = loan.LoanDate,
-                                       Deadline = loan.Deadline,
-                                       LoanAmount = loan.LoanAmount,
-                                       Creditor = new Creditor { FirstName = creditor.FirstName,LastName=creditor.LastName}
+                                       loanID = Debtors.Key,
+                                       Debtors = Debtors.ToList()
                                    }).ToList();
 
-                    for(int i = 0; i <= loans.Count; i++)
-                    {
-                        if(debtors[i].loanID == loans[i].LoanID)
-                        {
-                            loans[i].Debtors.Add(debtors[i].debtor);
-                        }
-                    }
+                    loans = (from loan in loanss
+                             join debtor in debtors on loan.loanID equals debtor.loanID
+                             select new Loan
+                             {
+                                 LoanID = loan.loanID,
+                                 LoanName = loan.loanName,
+                                 LoanDesc = loan.loanDesc,
+                                 LoanDate = loan.loanDate,
+                                 Deadline = loan.deadline,
+                                 LoanAmount = loan.loanAmount,
+                                 Creditor = loan.Creditor,
+                                 Debtors = debtor.Debtors.Select(x => x.debtor).ToList()
+                             }).ToList();
 
                     return loans;
                 }

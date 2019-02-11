@@ -26,7 +26,7 @@ namespace DebtyFinal.Controllers
             var userName = HttpContext.User.Identity.Name;
             var id = personLogic.GetPersonIDByUserName(userName);
             var loans = loanLogic.GetLoans(id);
-            return View();
+            return View(loans);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DebtyFinal.DataAccess.DataModels.Loan>
+﻿@model IEnumerable<Loan>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,54 +6,33 @@
 
 <h1>Index</h1>
 
-@*<p>
+<p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.LoanName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LoanDesc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LoanDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Deadline)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LoanAmount)
-            </th>
-            <th></th>
+    @foreach (var loan in Model)
+    {
+    <tr>
+        <td>
+            <h3>@loan.LoanName</h3>
+            <h4>Description: @loan.LoanDesc </h4>
+        </td>
+        
+        <td>Loan Description: </td>
+        <td>Loan Amount: @loan.LoanAmount</td>
+        <td>Loan Date: @loan.LoanDate</td>
+        <td>Deadline: @loan.Deadline</td>
+        <td>
+            Debtors:
+            @foreach (var debtor in loan.Debtors)
+            {
+            <p>@debtor.FirstName  @debtor.LastName</p>
+            }
+        </td>
         </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoanName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoanDesc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoanDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Deadline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoanAmount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LoanID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LoanID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LoanID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
+    }
+</table>
+
+@*<a asp-action="Edit" asp-route-id="@item.LoanID">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.LoanID">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.LoanID">Delete</a>*@
